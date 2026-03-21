@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteIO - Order Placed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <nav class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-indigo-600">ByteIO</h1>
+                <div class="flex gap-4">
+                    <a href="/orders" class="text-indigo-600 hover:text-indigo-800">Orders</a>
+                    <a href="/cart" class="text-indigo-600 hover:text-indigo-800">Cart</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex items-center justify-center min-h-[calc(100vh-80px)]">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-md text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">Order Placed!</h1>
+            <p class="text-gray-600 mb-4">Order #{{ order.id }}</p>
+            
+            <div class="bg-gray-50 rounded-lg p-4 mb-4 text-left">
+                <p><span class="font-medium">Payment:</span> {{ order.payment_mode }}</p>
+                <p><span class="font-medium">Total:</span> ₹{{ order.total }}</p>
+                <p><span class="font-medium">Name:</span> {{ order.customer_name }}</p>
+                <p><span class="font-medium">Phone:</span> {{ order.phone }}</p>
+            </div>
+            
+            {% if order.payment_mode == 'COD' %}
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                <p class="text-yellow-800 font-medium">COD Order Placed</p>
+                <p class="text-yellow-600 text-sm">Our agent will call you shortly to confirm your order.</p>
+            </div>
+            {% endif %}
+            
+            <div class="flex gap-4 justify-center">
+                <a href="/products" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700">
+                    Continue Shopping
+                </a>
+                <a href="/orders" class="bg-gray-200 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-300">
+                    View Orders
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

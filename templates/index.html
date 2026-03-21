@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteIO - Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div id="toast" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 hidden">
+        Added to cart!
+    </div>
+
+    <nav class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-indigo-600">ByteIO</h1>
+                <div class="flex gap-4 items-center">
+                    <a href="/orders" class="text-indigo-600 hover:text-indigo-800">Orders</a>
+                    <a href="/cart" class="relative bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+                        Cart
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center {% if cart_count == 0 %}hidden{% endif %}">{{ cart_count }}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-xl font-semibold mb-6">Our Products</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {% for product in products %}
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg">{{ product.name }}</h3>
+                    <p class="text-indigo-600 font-bold text-xl mt-2">₹{{ product.price }}</p>
+                    <button 
+                        type="button"
+                        onclick="addToCart({{ product.id }})"
+                        class="mt-4 w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700"
+                    >
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        async function addToCart(productId) {
+            const formData = new FormData();
+            formData.append('product_id', productId);
+
+            const response = await fetch('/cart/add', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const cartCount = document.getElementById('cart-count');
+                cartCount.textContent = data.cart_count;
+                cartCount.classList.remove('hidden');
+
+                const toast = document.getElementById('toast');
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>
