@@ -26,7 +26,7 @@ async def trigger_cod_confirmation_call(phone: str, order_id: int, order_details
         
     ist = tz.gettz("Asia/Kolkata")
     ist_time = datetime.now(ist) + timedelta(seconds=10)
-    scheduled_at = ist_time.astimezone(tz.UTC).isoformat()
+    scheduled_at = ist_time.isoformat()
         
     user_data = {
         "order_id": order_id,
