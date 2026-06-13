@@ -5,6 +5,7 @@ A FastAPI-based e-commerce order system with AI-powered phone call confirmations
 <img width="2401" height="1706" alt="image" src="https://github.com/user-attachments/assets/42e9dc00-d888-4c73-ab04-870a8c5e6e0d" />
 <img width="2401" height="1706" alt="image" src="https://github.com/user-attachments/assets/3fa80221-4d22-49b3-bd4f-fbff7fa2ca4e" />
 <img width="2401" height="1706" alt="image" src="https://github.com/user-attachments/assets/23324d34-e8ba-4cf4-b1d2-d7f81701fa93" />
+<img width="2401" height="1706" alt="image" src="https://github.com/user-attachments/assets/72a99b1d-f18c-4b42-89d2-25099b8b0107" />
 
 ## Features
 
