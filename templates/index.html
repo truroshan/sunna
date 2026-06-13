@@ -5,40 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ByteIO - Products</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
 </head>
-<body class="bg-gray-100 min-h-screen">
-    <div id="toast" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 hidden">
-        Added to cart!
+<body class="bg-gray-50 min-h-screen">
+    <div id="toast" class="fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-xl z-50 hidden transform transition-all">
+        ✓ Added to cart!
     </div>
 
-    <nav class="bg-white shadow-lg">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <h1 class="text-2xl font-bold text-indigo-600">ByteIO</h1>
-                <div class="flex gap-4 items-center">
-                    <a href="/orders" class="text-indigo-600 hover:text-indigo-800">Orders</a>
-                    <a href="/cart" class="relative bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
-                        Cart
-                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center {% if cart_count == 0 %}hidden{% endif %}">{{ cart_count }}</span>
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-gray-900 rounded-full"></div>
+                        <h1 class="text-xl font-bold text-gray-900">ByteIO</h1>
+                    </div>
+                    <!-- View Mode Toggle -->
+                    <div class="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
+                        <button onclick="window.location.href='/products'" class="px-3 py-1.5 text-sm font-medium text-white bg-gray-900 rounded-md transition">
+                            Client
+                        </button>
+                        <button onclick="window.location.href='/admin'" class="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-md transition">
+                            Admin
+                        </button>
+                    </div>
+                </div>
+                <div class="flex gap-6 items-center">
+                    <a href="/products" class="text-gray-900 font-medium">Store</a>
+                    <a href="/orders" class="text-gray-600 hover:text-gray-900 transition">Orders</a>
+                    <a href="/cart" class="relative bg-gray-900 text-white px-5 py-2 rounded-md hover:bg-gray-800 transition">
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                            </svg>
+                            Cart
+                        </span>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center {% if cart_count == 0 %}hidden{% endif %}">{{ cart_count }}</span>
                     </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="container mx-auto px-4 py-8">
-        <h2 class="text-xl font-semibold mb-6">Our Products</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mb-8">
+            <h2 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">OUR PRODUCTS</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {% for product in products %}
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
-                <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-48 object-cover">
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl">
+                <div class="relative">
+                    <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-56 object-cover">
+                    <div class="absolute top-3 left-3">
+                        <span class="bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-medium px-2 py-1 rounded">{{ product.category }}</span>
+                    </div>
+                </div>
                 <div class="p-4">
-                    <h3 class="font-semibold text-lg">{{ product.name }}</h3>
-                    <p class="text-indigo-600 font-bold text-xl mt-2">₹{{ product.price }}</p>
-                    <button 
+                    <h3 class="font-semibold text-gray-900 text-base mb-2">{{ product.name }}</h3>
+                    <p class="text-gray-900 font-bold text-lg mb-4">₹{{ "{:,}".format(product.price) }}</p>
+                    <button
                         type="button"
                         onclick="addToCart({{ product.id }})"
-                        class="mt-4 w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700"
+                        class="w-full bg-gray-900 text-white py-2.5 rounded-md hover:bg-gray-800 transition font-medium text-sm"
                     >
                         Add to Cart
                     </button>

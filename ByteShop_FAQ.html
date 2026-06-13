@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteShop - Frequently Asked Questions</title>
+    <style>
+        @media print {
+            body {
+                margin: 0;
+                padding: 20mm;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            padding: 60px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #1a1a1a;
+            padding-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+
+        .question {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            padding-left: 10px;
+            border-left: 4px solid #1a1a1a;
+        }
+
+        .answer {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.8;
+            text-align: justify;
+            padding-left: 14px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .print-button:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .date {
+            color: #999;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button no-print" onclick="window.print()">Save as PDF / Print</button>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">ByteShop</div>
+            <div class="subtitle">Frequently Asked Questions (FAQ)</div>
+            <div class="date" id="current-date"></div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">1. What is ByteShop?</div>
+            <div class="answer">
+                ByteShop is an AI-powered e-commerce platform that offers a seamless shopping experience with automated order verification. We use advanced voice AI technology to confirm Cash on Delivery (COD) orders, reducing fake orders and ensuring smooth deliveries.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">2. How does the COD verification call work?</div>
+            <div class="answer">
+                When you place a COD order, our AI agent automatically calls you within seconds to confirm your order details. The AI will verify your name, product, delivery address, and order amount. Simply respond with 'yes' to confirm or provide any changes needed. This entire process takes less than a minute and helps prevent fake orders.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">3. What payment methods do you accept?</div>
+            <div class="answer">
+                We accept two payment methods: Cash on Delivery (COD) for orders that will be verified via AI call, and Card payments for instant confirmed orders. Card payments are processed securely and your order is confirmed immediately without requiring a verification call.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">4. Will I receive a delivery notification?</div>
+            <div class="answer">
+                Yes! Once your order is confirmed and out for delivery, our AI agent will call you again to notify you about the delivery. This ensures you're available to receive your package and helps our delivery partners complete deliveries efficiently.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">5. How can I track my order status?</div>
+            <div class="answer">
+                You can track your order by visiting the 'Orders' page on our website. Your order will show one of three statuses: Pending (waiting for confirmation), Confirmed (verified and being processed), or Cancelled. You can also view complete call transcripts and details of any verification calls made to you.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">6. Can I cancel my order?</div>
+            <div class="answer">
+                Yes, you can cancel your order in two ways: (1) During the AI verification call, simply tell the agent you want to cancel and provide a reason, or (2) Contact our customer support team. Orders can be cancelled before they're shipped. Once shipped, you'll need to refuse delivery or initiate a return.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">7. What if I miss the verification call?</div>
+            <div class="answer">
+                If you miss the AI verification call, don't worry! Your order will remain in 'Pending' status, and you can request a callback by contacting support. Alternatively, you can mention your preferred callback time during the initial call, and our system will automatically reschedule the verification.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">8. Is my personal information safe?</div>
+            <div class="answer">
+                Absolutely! We take data privacy seriously. Your phone number is masked in our admin systems (only last 3 digits visible), and all call recordings are encrypted and stored securely. We never share your personal information with third parties. Our AI conversations are only used for order verification purposes.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">9. What is your return and refund policy?</div>
+            <div class="answer">
+                We offer a 7-day return policy for most products from the date of delivery. Items must be unused, in original packaging, and with all tags attached. For COD orders, refunds are processed within 5-7 business days to your bank account. For card payments, refunds are credited to the original payment method within 3-5 business days.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">10. How can I contact customer support?</div>
+            <div class="answer">
+                Our customer support team is available to help you! You can reach us through: Email support (response within 24 hours), Phone support during business hours (9 AM - 6 PM IST), or Live chat on our website. For order-specific queries, please have your Order ID ready for faster assistance.
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>ByteShop</strong> - Smart E-commerce Platform</p>
+            <p style="margin-top: 10px;">For more information, visit our website or contact our support team.</p>
+        </div>
+    </div>
+
+    <script>
+        // Set current date
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const date = new Date().toLocaleDateString('en-US', options);
+        document.getElementById('current-date').textContent = `Generated on ${date}`;
+    </script>
+</body>
+</html>
