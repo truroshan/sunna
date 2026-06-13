@@ -2,7 +2,9 @@
 
 A FastAPI-based e-commerce order system with AI-powered phone call confirmations for Cash on Delivery (COD) orders using Bolna Voice AI.
 
-<img width="3438" height="2045" alt="image" src="https://github.com/user-attachments/assets/3051df59-e85d-4b6e-b889-884701e0ff80" />
+<img width="2401" height="1706" alt="image" src="https://github.com/user-attachments/assets/42e9dc00-d888-4c73-ab04-870a8c5e6e0d" />
+<img width="2401" height="1706" alt="image" src="https://github.com/user-attachments/assets/3fa80221-4d22-49b3-bd4f-fbff7fa2ca4e" />
+<img width="2401" height="1706" alt="image" src="https://github.com/user-attachments/assets/23324d34-e8ba-4cf4-b1d2-d7f81701fa93" />
 
 ## Features
 
